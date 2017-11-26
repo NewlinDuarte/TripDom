@@ -33,14 +33,14 @@ public class UsuarioDbo {
 
         //abriendo db para insertar en Usuario
         SQLiteDatabase db = connection.getWritableDatabase();
-        db.insert("usuario", null, cv);
+        Long id = db.insert("usuario", null, cv);
+
+        //setting id value generated from database to "usuario.id" to confirm the insert went through correctly
+        usuario.setId(id.intValue());
 
         //Cerrando Db
         db.close();
     }
 
-    public List<Usuario> buscar()
-    {
 
-    }
 }
