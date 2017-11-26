@@ -29,6 +29,8 @@ public class RegistroUsuario extends AppCompatActivity {
         final EditText txtTelefono = findViewById((R.id.txtTelefono));
 
         Button btnGuardar = findViewById((R.id.btnGuardar));
+        Button btnListar = findViewById((R.id.btnListar));
+
 
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,12 +41,23 @@ public class RegistroUsuario extends AppCompatActivity {
                 usuario.setNombre(txtNombre.getText().toString());
                 usuario.setEmail(txtEmail.getText().toString());
                 usuario.setTelefono(txtTelefono.getText().toString());
-                usuario.setTipo(TipoUsuario.CLIENTE);
+                usuario.setTipo(TipoUsuario.PUBLICADOR);
 
                 Log.i(Log_T,usuario.toString());
 
-                //Inserting user with data obtained in "RegistroUsuario"
+                //Inserting user with data obtained from "RegistroUsuario"
                 db.crear(usuario);
+
+            }
+        });
+
+        btnListar.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view) {
+                for (Usuario user : db.buscar()) {
+                    Log.i("ListUsuarios", user.toString());
+                }
             }
         });
 
