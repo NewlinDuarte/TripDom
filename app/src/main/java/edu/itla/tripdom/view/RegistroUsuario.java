@@ -10,6 +10,7 @@ import android.widget.EditText;
 
 import edu.itla.tripdom.R;
 import edu.itla.tripdom.dao.UsuarioDbo;
+import edu.itla.tripdom.entity.TipoUsuario;
 import edu.itla.tripdom.entity.Usuario;
 
 public class RegistroUsuario extends AppCompatActivity {
@@ -38,6 +39,7 @@ public class RegistroUsuario extends AppCompatActivity {
                 usuario.setNombre(txtNombre.getText().toString());
                 usuario.setEmail(txtEmail.getText().toString());
                 usuario.setTelefono(txtTelefono.getText().toString());
+                usuario.setTipo(TipoUsuario.CLIENTE);
 
                 Log.i(Log_T,usuario.toString());
 

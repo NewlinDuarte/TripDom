@@ -10,7 +10,7 @@ public class Usuario {
     private String nombre;
     private String email;
     private  String telefono;
-    private  TipoUsuario tipo;
+    private  TipoUsuario tipo ;
 
     //region getters and setters
     public int getId() {
