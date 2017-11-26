@@ -3,6 +3,7 @@ package edu.itla.tripdom.dao;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 /**
  * Created by MESCyT on 26/11/2017.
@@ -21,9 +22,11 @@ public class DbConnection extends SQLiteOpenHelper
 
 
     @Override
-    public void onCreate(SQLiteDatabase sqLiteDatabase)
+    public void onCreate(SQLiteDatabase SqLiteDatabase)
     {
-
+        Log.i(LOG_T, "Iniciando onCreate...");
+        SqLiteDatabase.execSQL(SqlHelperSchema.USUARIO_TABLE);
+        //TODO: poner las sentencias de las entidades restantes
     }
 
     @Override

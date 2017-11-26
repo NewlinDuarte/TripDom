@@ -13,4 +13,5 @@ public class SqlHelperSchema
             "`telefono` TEXT NOT NULL," +
             "`tipo_usuario` TEXT NOT NULL" +
             ");";
+    //Crear las restantes entidades
 }
