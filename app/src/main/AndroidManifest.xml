@@ -16,7 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.RegistroUsuario"></activity>
+        <activity android:name=".view.RegistroUsuario"
+            android:exported="true"></activity>
     </application>
 
 </manifest>
