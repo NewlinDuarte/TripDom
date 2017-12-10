@@ -26,24 +26,29 @@ public class UsuarioDbo {
     //Creates a "Usuario" in the "usuario" table in the database
     public void crear(Usuario usuario)
     {
-        connection.getWritableDatabase();
-        ContentValues cv = new ContentValues();
 
-        //Campos para insertar en usuario
-        cv.put("nombre", usuario.getNombre());
-        cv.put("email", usuario.getEmail());
-        cv.put("telefono", usuario.getTelefono());
-        cv.put("tipo_usuario", usuario.getTipo().toString());
+        if(usuario.getId() > 0) {
+            editar(usuario);
+        }else{
+            connection.getWritableDatabase();
+            ContentValues cv = new ContentValues();
 
-        //abriendo db para insertar en Usuario
-        SQLiteDatabase db = connection.getWritableDatabase();
-        Long id = db.insert("usuario", null, cv);
+            //Campos para insertar en usuario
+            cv.put("nombre", usuario.getNombre());
+            cv.put("email", usuario.getEmail());
+            cv.put("telefono", usuario.getTelefono());
+            cv.put("tipo_usuario", usuario.getTipo().toString());
 
-        //setting id value generated from database to "usuario.id" to confirm the insert went through correctly
-        usuario.setId(id.intValue());
+            //abriendo db para insertar en Usuario
+            SQLiteDatabase db = connection.getWritableDatabase();
+            Long id = db.insert("usuario", null, cv);
 
-        //Cerrando Db
-        db.close();
+            //setting id value generated from database to "usuario.id" to confirm the insert went through correctly
+            usuario.setId(id.intValue());
+
+            //Cerrando Db
+            db.close();
+        }
     }
 
     public void editar(Usuario usuario)

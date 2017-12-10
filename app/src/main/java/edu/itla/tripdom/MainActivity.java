@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import edu.itla.tripdom.dao.DbConnection;
+import edu.itla.tripdom.view.ListaPublicacion;
 import edu.itla.tripdom.view.ListaUsuario;
 
 public class MainActivity extends AppCompatActivity {
@@ -15,6 +17,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button btnUsuario = findViewById(R.id.ListaUsuariobtn);
+        Button btnEvento = findViewById(R.id.ListaPublicacionbtn);
+        DbConnection connection = new DbConnection(this);
+
 
         btnUsuario.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -26,6 +31,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intentar);
 
 
+            }
+        });
+
+        btnEvento.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentar = new Intent(MainActivity.this, ListaPublicacion.class);
+
+                startActivity(intentar);
             }
         });
 

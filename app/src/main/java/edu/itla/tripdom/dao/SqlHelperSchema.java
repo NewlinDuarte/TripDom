@@ -12,7 +12,6 @@ public class SqlHelperSchema {
             "`telefono` TEXT NOT NULL," +
             "`tipo_usuario` TEXT NOT NULL" +
             ");";
-    //Crear las restantes entidades
 
     public static final String PUBLICACION_TABLE = "CREATE TABLE IF NOT EXISTS `publicacion` (" +
             "`id`	INTEGER PRIMARY KEY AUTOINCREMENT," +

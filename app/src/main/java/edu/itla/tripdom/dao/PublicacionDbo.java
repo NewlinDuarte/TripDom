@@ -1,6 +1,7 @@
 package edu.itla.tripdom.dao;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -11,6 +12,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.SimpleTimeZone;
 
+import edu.itla.tripdom.R;
 import edu.itla.tripdom.entity.Publicacion;
 import edu.itla.tripdom.entity.Usuario;
 
@@ -23,6 +25,11 @@ public class PublicacionDbo {
     SimpleDateFormat DF;
 
     private DbConnection connection;
+
+    public PublicacionDbo(Context context)
+    {
+        connection = new DbConnection(context);
+    }
 
 
     public void crear(Publicacion publicacion)
@@ -108,6 +115,7 @@ public class PublicacionDbo {
                 p.setDescripcion(cursor.getString(cursor.getColumnIndex("descripcion")));
                 p.setEstado(cursor.getString(cursor.getColumnIndex("status")));
                 p.setCupo(cursor.getInt(cursor.getColumnIndex("cupo")));
+                p.setUsuario(u);
             }
             catch (ParseException ex)
             {
@@ -115,8 +123,13 @@ public class PublicacionDbo {
                 p.setFechaviaje(new Date());
                 p.setPrecio(0);
                 p.setEstado("");
+                p.setCupo(0);
+                p.setUsuario(new Usuario());
             }
+            cursor.moveToNext();
             }
+            db.close();
+            cursor.close();
             return publicaciones;
 
     }

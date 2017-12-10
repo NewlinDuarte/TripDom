@@ -53,7 +53,7 @@ public class RegistroUsuario extends AppCompatActivity {
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Usuario usuario = new Usuario();
+
 
                 //Obtaining data from the activity
                 usuario.setNombre(txtNombre.getText().toString());

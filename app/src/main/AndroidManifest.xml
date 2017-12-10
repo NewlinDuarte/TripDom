@@ -19,7 +19,9 @@
         <activity
             android:name=".view.RegistroUsuario"
             android:exported="true" />
-        <activity android:name=".view.ListaUsuario"></activity>
+        <activity android:name=".view.ListaUsuario" />
+        <activity android:name=".view.ListaPublicacion" />
+        <activity android:name=".view.RegistroPublicacion"></activity>
     </application>
 
 </manifest>

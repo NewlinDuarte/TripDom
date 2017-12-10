@@ -26,6 +26,8 @@ public class DbConnection extends SQLiteOpenHelper
     {
         Log.i(LOG_T, "Iniciando onCreate...");
         SqLiteDatabase.execSQL(SqlHelperSchema.USUARIO_TABLE);
+        SqLiteDatabase.execSQL(SqlHelperSchema.PUBLICACION_TABLE);
+        SqLiteDatabase.execSQL(SqlHelperSchema.PUBLICACION_DETALLE_TABLE);
         //TODO: poner las sentencias de las entidades restantes
     }
 
