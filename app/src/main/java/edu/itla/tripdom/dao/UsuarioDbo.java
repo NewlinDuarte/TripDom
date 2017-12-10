@@ -46,6 +46,37 @@ public class UsuarioDbo {
         db.close();
     }
 
+    public void editar(Usuario usuario)
+    {
+        connection.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        //Campos para editar en usuario
+        cv.put("nombre", usuario.getNombre());
+        cv.put("email", usuario.getEmail());
+        cv.put("telefono", usuario.getTelefono());
+        cv.put("tipo_usuario", usuario.getTipo().toString());
+
+        //abriendo db para insertar en Usuario
+        SQLiteDatabase db = connection.getWritableDatabase();
+        db.update("usuario",cv,"id =" + usuario.getId(), null);
+
+        //Cerrando Db
+        db.close();
+    }
+
+    public void eliminar(Usuario usuario)
+    {
+        connection.getWritableDatabase();
+
+        //abriendo db para insertar en Usuario
+        SQLiteDatabase db = connection.getWritableDatabase();
+        db.delete("usuario","id = " + usuario.getId() , null);
+
+        //Cerrando Db
+        db.close();
+    }
+
     public List<Usuario> buscar()
     {
         //User list where Usuario data will be held temporarily
