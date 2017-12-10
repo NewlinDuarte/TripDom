@@ -59,9 +59,9 @@
             android:text="Guardar" />
 
         <Button
-            android:id="@+id/btnListar"
+            android:id="@+id/btnCambiar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Listar" />
+            android:text="Cambiar" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

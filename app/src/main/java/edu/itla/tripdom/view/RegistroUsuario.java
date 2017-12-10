@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import edu.itla.tripdom.R;
+import edu.itla.tripdom.UsuarioActual;
 import edu.itla.tripdom.dao.UsuarioDbo;
 import edu.itla.tripdom.entity.TipoUsuario;
 import edu.itla.tripdom.entity.Usuario;
@@ -16,6 +17,8 @@ import edu.itla.tripdom.entity.Usuario;
 public class RegistroUsuario extends AppCompatActivity {
     private UsuarioDbo db;
     private static final String Log_T = "ResgistrioUsuario";
+    private Usuario usuario;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +32,22 @@ public class RegistroUsuario extends AppCompatActivity {
         final EditText txtTelefono = findViewById((R.id.txtTelefono));
 
         Button btnGuardar = findViewById((R.id.btnGuardar));
-        Button btnListar = findViewById((R.id.btnListar));
+        Button btnCambiar = findViewById((R.id.btnCambiar));
+
+        db = new UsuarioDbo(this);
+
+        //Get the bundle
+        Bundle bundle = getIntent().getExtras();
+
+        //Extract the data…
+        if(bundle != null && bundle.containsKey("usuario")) {
+            usuario = (Usuario) bundle.getSerializable("usuario");
+
+            txtNombre.setText(usuario.getNombre());
+            txtEmail.setText(usuario.getEmail());
+            txtTelefono.setText(usuario.getTelefono());
+        }
+
 
 
         btnGuardar.setOnClickListener(new View.OnClickListener() {
@@ -51,12 +69,12 @@ public class RegistroUsuario extends AppCompatActivity {
             }
         });
 
-        btnListar.setOnClickListener(new View.OnClickListener()
+        btnCambiar.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view) {
-                for (Usuario user : db.buscar()) {
-                    Log.i("ListUsuarios", user.toString());
+                if(usuario !=null && usuario.getId() > 0){
+                    UsuarioActual.setUsuario(usuario);
                 }
             }
         });
