@@ -34,7 +34,6 @@ public class RegistroUsuario extends AppCompatActivity {
         Button btnGuardar = findViewById((R.id.btnGuardar));
         Button btnCambiar = findViewById((R.id.btnCambiar));
 
-        db = new UsuarioDbo(this);
 
         //Get the bundle
         Bundle bundle = getIntent().getExtras();
